@@ -1,0 +1,82 @@
+{
+    "concrete_materials": [
+        {
+            "name": "C30/37",
+            "f_ck": {
+                "value": 30,
+                "unit": "MPa"
+            },
+            "f_ckcube": {
+                "value": 37,
+                "unit": "MPa"
+            },
+            "f_ctm": {
+                "value": 2.9,
+                "unit": "MPa"
+            },
+            "fctk05": {
+                "value": 2.0,
+                "unit": "MPa"
+            },
+            "fctk95": {
+                "value": 3.8,
+                "unit": "MPa"
+            },
+            "Ecm": {
+                "value": 33,
+                "unit": "GPa"
+            },
+            "epsilon_c1": {
+                "value": 2.2,
+                "unit": "permille"
+            },
+            "density": {
+                "value": 2400,
+                "unit": "kg/m^3"
+            },
+            "thermal_conductivity": {
+                "value": 1.7,
+                "unit": "W/(m*K)"
+            }
+        },
+        {
+            "name": "C40/50",
+            "f_ck": {
+                "value": 40,
+                "unit": "MPa"
+            },
+            "f_ckcube": {
+                "value": 50,
+                "unit": "MPa"
+            },
+            "f_ctm": {
+                "value": 3.5,
+                "unit": "MPa"
+            },
+            "fctk05": {
+                "value": 2.5,
+                "unit": "MPa"
+            },
+            "fctk95": {
+                "value": 4.6,
+                "unit": "MPa"
+            },
+            "Ecm": {
+                "value": 35,
+                "unit": "GPa"
+            },
+            "epsilon_c1": {
+                "value": 2.3,
+                "unit": "permille"
+            },
+            "density": {
+                "value": 2400,
+                "unit": "kg/m^3"
+            },
+            "thermal_conductivity": {
+                "value": 1.7,
+                "unit": "W/(m*K)"
+            }
+        }
+    ]
+}
