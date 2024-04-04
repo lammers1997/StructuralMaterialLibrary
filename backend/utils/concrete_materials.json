@@ -77,6 +77,162 @@
                 "value": 1.7,
                 "unit": "W/(m*K)"
             }
+        },
+        {
+            "name": "C12/15",
+            "f_ck": {
+                "value": 12,
+                "unit": "MPa"
+            },
+            "f_ckcube": {
+                "value": 15,
+                "unit": "MPa"
+            },
+            "f_ctm": {
+                "value": 1.6,
+                "unit": "MPa"
+            },
+            "fctk05": {
+                "value": 1.1,
+                "unit": "MPa"
+            },
+            "fctk95": {
+                "value": 2.0,
+                "unit": "MPa"
+            },
+            "Ecm": {
+                "value": 27,
+                "unit": "GPa"
+            },
+            "epsilon_c1": {
+                "value": 1.8,
+                "unit": "permille"
+            },
+            "density": {
+                "value": 2400,
+                "unit": "kg/m^3"
+            },
+            "thermal_conductivity": {
+                "value": 1.7,
+                "unit": "W/(m*K)"
+            }
+        },
+        {
+            "name": "C16/20",
+            "f_ck": {
+                "value": 16,
+                "unit": "MPa"
+            },
+            "f_ckcube": {
+                "value": 20,
+                "unit": "MPa"
+            },
+            "f_ctm": {
+                "value": 1.9,
+                "unit": "MPa"
+            },
+            "fctk05": {
+                "value": 1.3,
+                "unit": "MPa"
+            },
+            "fctk95": {
+                "value": 2.5,
+                "unit": "MPa"
+            },
+            "Ecm": {
+                "value": 29,
+                "unit": "GPa"
+            },
+            "epsilon_c1": {
+                "value": 1.9,
+                "unit": "permille"
+            },
+            "density": {
+                "value": 2400,
+                "unit": "kg/m^3"
+            },
+            "thermal_conductivity": {
+                "value": 1.7,
+                "unit": "W/(m*K)"
+            }
+        },
+        {
+            "name": "C20/25",
+            "f_ck": {
+                "value": 20,
+                "unit": "MPa"
+            },
+            "f_ckcube": {
+                "value": 25,
+                "unit": "MPa"
+            },
+            "f_ctm": {
+                "value": 2.2,
+                "unit": "MPa"
+            },
+            "fctk05": {
+                "value": 1.5,
+                "unit": "MPa"
+            },
+            "fctk95": {
+                "value": 2.9,
+                "unit": "MPa"
+            },
+            "Ecm": {
+                "value": 30,
+                "unit": "GPa"
+            },
+            "epsilon_c1": {
+                "value": 2.0,
+                "unit": "permille"
+            },
+            "density": {
+                "value": 2400,
+                "unit": "kg/m^3"
+            },
+            "thermal_conductivity": {
+                "value": 1.7,
+                "unit": "W/(m*K)"
+            }
+        },
+        {
+            "name": "C25/30",
+            "f_ck": {
+                "value": 25,
+                "unit": "MPa"
+            },
+            "f_ckcube": {
+                "value": 30,
+                "unit": "MPa"
+            },
+            "f_ctm": {
+                "value": 2.6,
+                "unit": "MPa"
+            },
+            "fctk05": {
+                "value": 1.8,
+                "unit": "MPa"
+            },
+            "fctk95": {
+                "value": 3.3,
+                "unit": "MPa"
+            },
+            "Ecm": {
+                "value": 31,
+                "unit": "GPa"
+            },
+            "epsilon_c1": {
+                "value": 2.1,
+                "unit": "permille"
+            },
+            "density": {
+                "value": 2400,
+                "unit": "kg/m^3"
+            },
+            "thermal_conductivity": {
+                "value": 1.7,
+                "unit": "W/(m*K)"
+            }
         }
     ]
 }

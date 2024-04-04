@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import ConcreteList from './components/ConcreteList'
+import NavBar from './components/NavBar'
 
 
 import concreteService from './services/concretes'
@@ -11,15 +12,19 @@ import './App.css'
 
 const App = () => {
   const dispatch = useDispatch()
-  useEffect(()=> {
+  useEffect(() => {
     concreteService
-    .getAll().then(concretes => dispatch(setConcretes(concretes)))
+      .getAll().then(concretes => dispatch(setConcretes(concretes)))
   })
 
 
   return (
     <div>
-      <ConcreteList />
+      <h1>Material library for strucutral engineers</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap', }}>
+          <NavBar />
+          <ConcreteList />
+      </div>
     </div>
   )
 }

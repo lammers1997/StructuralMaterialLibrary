@@ -23,10 +23,10 @@ const ConcreteMaterialCard = ({
 
     }
     const textStyle = {
-        fontSize: '12px', // Adjust the font size as needed
-        lineHeight: '1.5', // Adjust the line height as needed
-        columnCount: 2, // Set the number of columns
-        columnGap: '10px', // Adjust the gap between columns
+        fontSize: '12px',
+        lineHeight: '1.5',
+        columnCount: 2,
+        columnGap: '10px',
     }
     const headerStyle = {
         textAlign: 'center',
@@ -48,9 +48,6 @@ const ConcreteMaterialCard = ({
                     <p>&#x3C1;: {density.value} {density.unit}</p>
                     <p>&#x3BB;: {thermal_conductivity.value} {thermal_conductivity.unit}</p>
                 </div>
-
-
-                {/* <li>{[f_ck, f_ckcube, f_ctm, fctk05, fctk95, Ecm, epsilon_c1, density, thermal_conductivity]}</li> */}
             </div>
         </div>
     )

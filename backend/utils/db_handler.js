@@ -1,5 +1,16 @@
+const mongoose = require('mongoose');
 const concreteMaterials = require('./concrete_materials.json');
+const config = require('./config');
 const Concrete = require('../models/concrete');
+const logger = require('./logger');
+
+mongoose.connect(config.MONGODB_URI)
+  .then(() => {
+    logger.info('connected to MongoDB');
+  })
+  .catch((error) => {
+    logger.error('error connecting to MongoDB:', error.message);
+  });
 
 const saveConcreteData = async (data) => {
   const concrete = new Concrete({
@@ -44,6 +55,14 @@ const saveConcreteData = async (data) => {
   await concrete.save();
 };
 
-concreteMaterials.concrete_materials.forEach((data) => {
-  saveConcreteData(data);
-})
+concreteMaterials.concrete_materials.forEach(async (data) => {
+  const { name } = data;
+  const result = await Concrete.findOne({ name });
+  if (result) {
+    console.log("Data found!");
+  }
+  else {
+    console.log("Not found")
+    saveConcreteData(data);
+  }
+});
