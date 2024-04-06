@@ -1,36 +1,20 @@
+
+import '../styles/NavBar.css'
+ 
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
-    const buttonStyle = {
-        fontSize: '24px',
-        border: 'none',
-        background: 'transparent',
-        cursor: 'pointer',
-        marginTop: '15px'
-    }
-    const handleButtonClick = (material) => {
-        // Handle button click based on the material
-        console.log(`Button clicked for ${material}`);
-    };
 
     return (
-        <div style={{
-            background: 'lightgray', border: '1px solid #000000',
-            height: '100vh', width: 150, zIndex: 0,
-            position: 'fixed', left: 0, top: 80,
+        <nav className='navbar'>
+            <Link to='/'>
+                <button className='navbutton'>Home</button>
+            </Link>
+            <Link to='/materials'>
+                <button className='navbutton'>Materials</button>
+            </Link>
 
-        }}>
-
-                <button style={buttonStyle} onClick={() => handleButtonClick('Concrete')}>
-                    Concrete
-                </button>
-                <button style={buttonStyle} onClick={() => handleButtonClick('Steel')}>
-                    Steel
-                </button>
-                <button style={buttonStyle} onClick={() => handleButtonClick('Timber')}>
-                    Timber
-                </button>
-            {/* Add more navigation links as needed */}
-        </div>
-    );
-};
-
+        </nav>
+    )
+}
 export default NavBar;
