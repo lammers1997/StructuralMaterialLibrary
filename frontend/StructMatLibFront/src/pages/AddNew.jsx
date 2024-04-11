@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import AddConcrete from '../components/AddConcrete'
-import AddTimber from '../components/AddTimber';
-import AddSteel from '../components/AddSteel';
+import AddConcreteForm from '../components/AddConcreteForm'
+import AddTimberForm from '../components/AddTimberForm';
+import AddSteelForm from '../components/AddSteelForm';
 
 const AddNew = () => {
 
@@ -32,9 +32,9 @@ const AddNew = () => {
             <button onClick={handleConcreteClick}>Concrete</button>
             <button onClick={handleSteelClick}>Steel</button>
             <button onClick={handleTimberClick}>Timber</button>
-            {concFormVisibility && <AddConcrete />}
-            {steelFormVisibility && <AddSteel />}
-            {timberFormVisibility && <AddTimber />}
+            {concFormVisibility && <AddConcreteForm />}
+            {steelFormVisibility && <AddSteelForm />}
+            {timberFormVisibility && <AddTimberForm />}
         </div>
 
     )

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AddSteel = () => {
+const AddSteelForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
     }
@@ -22,4 +22,4 @@ const AddSteel = () => {
         </form>
     )
 }
-export default AddSteel
+export default AddSteelForm
