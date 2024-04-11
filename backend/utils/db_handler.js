@@ -59,10 +59,10 @@ concreteMaterials.concrete_materials.forEach(async (data) => {
   const { name } = data;
   const result = await Concrete.findOne({ name });
   if (result) {
-    console.log("Data found!");
+    console.log('Data found!');
   }
   else {
-    console.log("Not found")
+    console.log('Not found');
     saveConcreteData(data);
   }
 });
