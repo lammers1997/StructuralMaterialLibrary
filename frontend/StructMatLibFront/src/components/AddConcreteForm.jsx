@@ -1,4 +1,8 @@
 import { useState } from "react"
+import { useDispatch } from 'react-redux'
+import { appendMaterial } from "../reducers/materialReducer"
+import concreteService from '../services/concretes'
+
 
 const AddConcreteForm = () => {
 
@@ -13,12 +17,70 @@ const AddConcreteForm = () => {
     const [newdensity, setNewdensity] = useState('')
     const [newthermal_conductivity, setNewthermal_conductivity] = useState('')
 
+    const dispatch = useDispatch()
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         //Send data to backend with services :)
+
+
+        const newConcreteMaterial = {
+            name: newName,
+            f_ck: {
+                value: newf_ck,
+                unit: 'MPa',
+            },
+            f_ckcube: {
+                value: newf_ckcube,
+                unit: 'MPa',
+            },
+            f_ctm: {
+                value: newf_ctm,
+                unit: 'MPa',
+            },
+            fctk05: {
+                value: newfctk05,
+                unit: 'MPa',
+            },
+            fctk95: {
+                value: newfctk95,
+                unit: 'MPa',
+            },
+            Ecm: {
+                value: newEcm,
+                unit: 'GPa',
+            },
+            epsilon_c1: {
+                value: newepsilon_c1,
+                unit: 'permille',
+            },
+            density: {
+                value: newdensity,
+                unit: 'kg/m^3',
+            },
+            thermal_conductivity: {
+                value: newthermal_conductivity,
+                unit: 'W/(m*K)',
+            },
+        }
+        dispatch(appendMaterial(newConcreteMaterial))
+
+        concreteService.addNewMaterial(newConcreteMaterial)
+
         setNewName('')
         setNewf_ck('')
+        setNewf_ckcube('')
+        setNewf_ctm('')
+        setNewfctk05('')
+        setNewfctk95('')
+        setNewEcm('')
+        setNewepsilon_c1('')
+        setNewepsilon_c1('')
+        setNewdensity('')
+        setNewthermal_conductivity('')
+
+        
     }
 
 
@@ -35,17 +97,50 @@ const AddConcreteForm = () => {
                     type="number"
                     step='0.01'
                     value={newf_ck}
-                    onChange={event => setNewf_ck(event.target.value)}
+                    onChange={event => setNewf_ck(event.target.value)} /></p>
 
-                /></p>
-                <p>f<sub>ck,cube</sub>: <input /></p>
-                <p>f<sub>ctm</sub>:<input /></p>
-                <p>f<sub>ctk,0,5</sub>:<input /></p>
-                <p>f<sub>ctk,0,95</sub>:<input /></p>
-                <p>E<sub>cm</sub>:<input /></p>
-                <p>&#x3B5;<sub>c1</sub>:<input /></p>
-                <p>&#x3C1;:<input /></p>
-                <p>&#x3BB;:<input /></p>
+                <p>f<sub>ck,cube</sub>: <input
+                    type="number"
+                    step='0.01'
+                    value={newf_ckcube}
+                    onChange={event => setNewf_ckcube(event.target.value)} /></p>
+                <p>f<sub>ctm</sub>:<input
+                    type='number'
+                    step='0.01'
+                    value={newf_ctm}
+                    onChange={event => setNewf_ctm(event.target.value)} /></p>
+
+                <p>f<sub>ctk,0,5</sub>:<input
+                    type='number'
+                    step='0.01'
+                    value={newfctk05}
+                    onChange={event => setNewfctk05(event.target.value)} /></p>
+
+                <p>f<sub>ctk,0,95</sub>:<input
+                    type='number'
+                    step='0.01'
+                    value={newfctk95}
+                    onChange={event => setNewfctk95(event.target.value)} /></p>
+                <p>E<sub>cm</sub>:<input
+                    type='number'
+                    step='0.01'
+                    value={newEcm}
+                    onChange={event => setNewEcm(event.target.value)} /></p>
+                <p>&#x3B5;<sub>c1</sub>:<input
+                    type='number'
+                    step='0.01'
+                    value={newepsilon_c1}
+                    onChange={event => setNewepsilon_c1(event.target.value)} /></p>
+                <p>&#x3C1;:<input
+                    type='number'
+                    step='0.01'
+                    value={newdensity}
+                    onChange={event => setNewdensity(event.target.value)} /></p>
+                <p>&#x3BB;:<input
+                    type='number'
+                    step='0.01'
+                    value={newthermal_conductivity}
+                    onChange={event => setNewthermal_conductivity(event.target.value)} /></p>
             </div>
             <div>
                 <button type="submit">add</button>

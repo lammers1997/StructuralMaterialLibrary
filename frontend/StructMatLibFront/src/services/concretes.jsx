@@ -9,6 +9,13 @@ const getAll = async () => {
     return response.data
 }
 
+const addNewMaterial = async (newMaterial) => {
+    // NO AUTHORIZATION YET
+    const response = await axios.post(baseUrl, newMaterial)
+    return response.data
+  }
+
 export default {
     getAll,
+    addNewMaterial
 }

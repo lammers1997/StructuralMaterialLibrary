@@ -14,6 +14,7 @@ const SideMenu = ({onMaterialChange, displayMaterial}) => {
     useEffect(() => {
         switch (displayMaterial) {
             case 'concrete':
+                
                 concreteService
                     .getAll().then(concretes => dispatch(setMaterials(concretes)))
                 break;
