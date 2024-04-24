@@ -32,7 +32,7 @@ const AddNew = () => {
             <button onClick={handleConcreteClick}>Concrete</button>
             <button onClick={handleSteelClick}>Steel</button>
             <button onClick={handleTimberClick}>Timber</button>
-            {concFormVisibility && <AddConcreteForm />}
+            {concFormVisibility && <AddConcreteForm/>}
             {steelFormVisibility && <AddSteelForm />}
             {timberFormVisibility && <AddTimberForm />}
         </div>

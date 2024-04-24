@@ -12,10 +12,13 @@ const materialSlice = createSlice({
         appendMaterial(state, action) {
             state.push(action.payload)
         },
+        deleteMaterial(state, action) {
+            return state.filter(material => material.id !== action.payload);
+        },
     }
 })
 
 
-export const { appendMaterial, setMaterials } = materialSlice.actions
+export const { appendMaterial, setMaterials, deleteMaterial } = materialSlice.actions
 
 export default materialSlice.reducer

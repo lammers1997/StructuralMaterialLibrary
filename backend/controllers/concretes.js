@@ -9,7 +9,6 @@ concretesRouter.get('/', async (request, response) => {
   response.json(concreteData);
 });
 
-
 // Add new concrete material
 concretesRouter.post('/', async (request, response) => {
   console.log('Adding');
@@ -27,4 +26,15 @@ concretesRouter.post('/', async (request, response) => {
 
   response.status(201).json(savedConcreteMat);
 });
+
+concretesRouter.delete('/:id', async (request, response) => {
+  const concreteMat = await Concrete.findById(request.params.id);
+  if (concreteMat) {
+    await Concrete.findByIdAndDelete(request.params.id);
+  } else {
+    response.status(404).json({ error: 'Material not found' });
+  }
+  response.status(204).end();
+});
+
 module.exports = concretesRouter;

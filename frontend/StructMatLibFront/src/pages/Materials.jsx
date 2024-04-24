@@ -1,5 +1,6 @@
 import MaterialList from '../components/MaterialList'
 import SideMenu from '../components/SideMenu'
+import Notification from '../components/Notification'
 
 import { useState } from 'react'
 
@@ -21,7 +22,7 @@ const Materials = () => {
           displayMaterial={displayMaterial} />
 
         {/* Show wanted material */}
-        <MaterialList displayMaterial={displayMaterial} />
+        <MaterialList displayMaterial={displayMaterial}/>
 
       </div>
     </div>

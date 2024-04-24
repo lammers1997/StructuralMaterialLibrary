@@ -9,13 +9,14 @@ const ConcreteMaterialCard = ({
     Ecm,
     epsilon_c1,
     density,
-    thermal_conductivity
+    thermal_conductivity,
+    deleteThis,
+    id
 }) => {
 
     const cardStyle = {
         width: '250px',
-        height: '200px',
-        padding: '20px',
+        padding: '5px',
         borderRadius: '8px',
         marginBottom: '20px',
         backgroundColor: 'grey',
@@ -29,13 +30,26 @@ const ConcreteMaterialCard = ({
         columnGap: '10px',
     }
     const headerStyle = {
-        textAlign: 'center',
-        alignSelf: 'flex-start', // Align the header to the top
+        display: 'flex',
+        height:40,
+        borderBottom: '1px solid #000000'
+
+    }
+    const buttonStyle = {
+        marginLeft:120,
     }
 
     return (
         <div className='concreteMatCard' style={cardStyle}>
-            <h2 style={headerStyle}>{name}</h2>
+            <div style={headerStyle}>
+                <div>
+                    <h2 style={{transform:'translateY(-70%)'}}>{name}</h2>
+
+                </div>
+                <div style={buttonStyle}>
+                    <button style={{transform:'translateY(20%)'}} onClick={() => deleteThis(id)}>Delete</button>
+                </div>
+            </div>
             <div className='concreteContainer'>
                 <div className='dataset' style={textStyle}>
                     <p>f<sub>ck</sub>: {f_ck.value} {f_ck.unit}</p>

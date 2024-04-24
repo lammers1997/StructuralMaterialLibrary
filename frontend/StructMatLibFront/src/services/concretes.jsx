@@ -10,12 +10,18 @@ const getAll = async () => {
 }
 
 const addNewMaterial = async (newMaterial) => {
-    // NO AUTHORIZATION YET
+    // NO AUTHORIZATION DONE YET
     const response = await axios.post(baseUrl, newMaterial)
     return response.data
-  }
+}
+
+const deleteMaterial = async (id) => {
+    const response = await axios.delete(`${baseUrl}/${id}`)
+    return response.data
+}
 
 export default {
     getAll,
-    addNewMaterial
+    addNewMaterial,
+    deleteMaterial
 }
