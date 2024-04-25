@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import materialReducer from './reducers/materialReducer'
+import concreteReducer from './reducers/concreteReducer'
+import steelReducer from './reducers/steelReducer'
+import timberReducer from './reducers/timberReducer'
 
 const store = configureStore({
     reducer: {
-        materials: materialReducer,
+        concrete: concreteReducer,
+        steel: steelReducer,
+        timber: timberReducer
     }
 })
 

@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
-import { appendMaterial } from "../reducers/materialReducer"
+import { appendConcretes } from "../reducers/concreteReducer"
 import concreteService from '../services/concretes'
 import Notification from "./Notification"
 
 
-const AddConcreteForm = (setMessage) => {
+const AddConcreteForm = () => {
 
     const [newName, setNewName] = useState('')
     const [newf_ck, setNewf_ck] = useState('')
@@ -67,7 +67,9 @@ const AddConcreteForm = (setMessage) => {
                 unit: 'W/(m*K)',
             },
         }
-        dispatch(appendMaterial(newConcreteMaterial))
+        //Dispatching not currently necessary, since data is constantly retrieved from server :/
+        // Might require some fix for this :P
+        //dispatch(appendMaterial(newConcreteMaterial))
 
         concreteService.addNewMaterial(newConcreteMaterial)
         setNotificationMessage(`Material ${newName}, successfully added`)

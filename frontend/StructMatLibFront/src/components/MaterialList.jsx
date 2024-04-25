@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux'
 import ConcreteMaterialCard from './ConcreteMaterialCard'
 import concreteService from '../services/concretes'
+import steelService from '../services/steels'
+
 import { useState } from 'react'
-import { deleteMaterial } from '../reducers/materialReducer'
+import { deleteConcrete } from '../reducers/concreteReducer'
+import { deleteSteel } from '../reducers/steelReducer'
 import Notification from './Notification'
+import SteelMaterialCard from './SteelMaterialCard'
 
 const MaterialList = ({ displayMaterial }) => {
 
@@ -13,13 +17,22 @@ const MaterialList = ({ displayMaterial }) => {
 
 
     //Get all materials from state
-    const materials = useSelector(state => {
-        return state.materials
+    const concretes = useSelector(state => {
+        return state.concrete
     })
+    const steels = useSelector(state => {
+        return state.steel
+    })
+    const timbers = useSelector(state => {
+        return state.timber
+    })
+
+
+    //ToDo: clicking delete shows the alert window twice. And window must be updated to make the deleted material disappear.
 
     const deleteConcrete = (id) => {
         console.log('DELETING', id)
-        const material = materials.find(m => m.id === id)
+        const material = concretes.find(m => m.id === id)
         const ifDelete = window.confirm(`Delete ${material.name}?`)
 
         if (!ifDelete) {
@@ -30,11 +43,11 @@ const MaterialList = ({ displayMaterial }) => {
                 .deleteMaterial(id)
                 .then(status => {
                     console.log(`Status: ${status}`)
-                    materials.filter(material => material.id !== id)
+                    concretes.filter(material => material.id !== id)
                     setNotificationMessage(
                         `${material.name} deleted successfully.`
                     )
-                    dispatch(deleteMaterial(id))
+                    dispatch(deleteConcrete(id))
                     setTimeout(() => {
                         setNotificationMessage(null)
                     }, 6000)
@@ -50,7 +63,42 @@ const MaterialList = ({ displayMaterial }) => {
         }
     }
 
-    //based on material clicked in sidemenu, display certain material
+    //ToDo: clicking delete shows the alert window twice. And window must be updated to make the deleted material disappear.
+
+    const deleteSteel = (id) => {
+        console.log('DELETING', id)
+        const material = steels.find(m => m.id === id)
+        const ifDelete = window.confirm(`Delete ${material.name}?`)
+
+        if (!ifDelete) {
+            console.log('Delete cancelled')
+            return
+        } else {
+            steelService
+                .deleteMaterial(id)
+                .then(status => {
+                    console.log(`Status: ${status}`)
+                    steels.filter(material => material.id !== id)
+                    setNotificationMessage(
+                        `${material.name} deleted successfully.`
+                    )
+                    dispatch(deleteSteel(id))
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                    }, 6000)
+                })
+                .catch(error => {
+                    setNotificationMessage(
+                        `Information of ${material.name} has already been removed from server`
+                    )
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                    }, 6000)
+                })
+        }
+    }
+
+    // based on material clicked in sidemenu, display certain material
     const renderMaterialCard = (material) => {
         switch (displayMaterial) {
             case 'concrete':
@@ -71,7 +119,16 @@ const MaterialList = ({ displayMaterial }) => {
                     />
                 )
             case 'steel':
-                return;
+                return (
+                    <SteelMaterialCard
+                        name={material.name}
+                        f_yk={material.f_yk}
+                        E={material.E}
+                        density={material.density}
+                        deleteThis={deleteSteel}
+                        id={material.id}
+                    />
+                )
             case 'timber':
                 return;
         }
@@ -86,10 +143,32 @@ const MaterialList = ({ displayMaterial }) => {
                 paddingLeft: 20, paddingTop: 20, width: 1000
             }}>
 
-                {materials.length === 0 ? (
+                {displayMaterial === 'concrete' && concretes.length === 0 ? (
+                    <div>No concrete materials yet added</div>
+                ) : displayMaterial === 'steel' && steels.length === 0 ? (
+                    <div>No steel materials yet added</div>
+                ) : displayMaterial === 'timber' && timbers.length === 0 ? (
+                    <div>No timber materials yet added</div>
+                ) : (
+                    displayMaterial === 'concrete' ? (
+                        concretes.map(material => (
+                            <div key={material.id}>
+                                {renderMaterialCard(material)}
+                            </div>
+                        ))
+                    ) : displayMaterial === 'steel' ? (
+                        steels.map(material => (
+                            <div key={material.id}>
+                                {renderMaterialCard(material)}
+                            </div>
+                        ))
+                    ) : null
+                )}
+
+                {/* {concretes.length === 0 ? (
                     <div>No materials yet added to this section</div>
                 ) : (
-                    materials
+                    concretes
                         .slice() // Create a copy of the array to avoid mutating the original array
                         .sort((a, b) => a.name.localeCompare(b.name)) // Sort the materials by name
                         .map(material => //loop through each material and render it
@@ -97,7 +176,9 @@ const MaterialList = ({ displayMaterial }) => {
                                 {renderMaterialCard(material)}
                             </div>
                         )
-                )}
+                )} */}
+
+
             </div >
         </div>
     )
