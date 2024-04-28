@@ -7,10 +7,12 @@ import { setSteel } from '../reducers/steelReducer'
 
 import concreteService from '../services/concretes'
 import steelService from '../services/steels'
+import timberService from '../services/timbers'
 
 
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { setTimber } from '../reducers/timberReducer'
 
 
 const Materials = () => {
@@ -25,6 +27,9 @@ const Materials = () => {
 
   steelService
     .getAll().then(steels => dispatch(setSteel(steels)))
+
+  timberService
+    .getAll().then(timbers => dispatch(setTimber(timbers)))
 
   //Handle different materialbutton click on sidemenu, to pass info forward
   const handleMaterialChange = (material) => {

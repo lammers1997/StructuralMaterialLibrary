@@ -12,13 +12,13 @@ const timberSlice = createSlice({
         appendTimber(state, action) {
             state.push(action.payload)
         },
-        deleteConcrete(state, action) {
+        deleteTimber(state, action) {
             return state.filter(material => material.id !== action.payload);
         },
     }
 })
 
 
-export const { setTimber, appendTimber, deleteConcrete } = timberSlice.actions
+export const { setTimber, appendTimber, deleteTimber } = timberSlice.actions
 
 export default timberSlice.reducer
