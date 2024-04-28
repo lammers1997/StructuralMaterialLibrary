@@ -11,6 +11,7 @@ const SteelMaterialCard = ({
     const user = useSelector((state) => state.user.user);
     
     const isAdmin = user && user.role === "admin";
+    
     const cardStyle = {
         width: '250px',
         padding: '5px',

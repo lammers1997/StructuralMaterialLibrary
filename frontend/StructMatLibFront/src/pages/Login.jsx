@@ -23,10 +23,11 @@ const Login = () => {
                 username, password,
             })
             dispatch(login(userCreds))
+            loginService.setToken(userCreds.token)
             setUsername('')
             setPassword('')
         } catch (error) {
-            console.log('something went wrong!')
+            console.log('Error username or password!')
         }
     }
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import loginService from './login'
 
 //ToDo: when creating frontend to BUILD: baseUrl = /api/concrete
 const baseUrl = `http://localhost:3003/api/timber`
@@ -16,7 +17,10 @@ const addNewMaterial = async (newMaterial) => {
 }
 
 const deleteMaterial = async (id) => {
-    const response = await axios.delete(`${baseUrl}/${id}`)
+    const config = {
+        headers: {Authorization: loginService.getToken()}
+    }
+    const response = await axios.delete(`${baseUrl}/${id}`, config)
     return response.data
 }
 

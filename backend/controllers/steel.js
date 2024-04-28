@@ -1,5 +1,7 @@
 const steelRouter = require('express').Router();
 const Steel = require('../models/steel');
+const User = require('../models/user');
+const { userExtractor } = require('../utils/middleware');
 
 // get all steels
 steelRouter.get('/', async (request, response) => {
@@ -26,14 +28,31 @@ steelRouter.post('/', async (request, response) => {
   response.status(201).json(savedSteelMat);
 });
 
-steelRouter.delete('/:id', async (request, response) => {
-  const steelMat = await Steel.findById(request.params.id);
-  if (steelMat) {
+steelRouter.delete('/:id', userExtractor, async (request, response) => {
+  const userId = request.user._id;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    if (user.role !== 'admin') {
+      return response.status(401).json({ error: 'Admin role is required' });
+    }
+
+    const steelMat = await Steel.findById(request.params.id);
+
+    if (!steelMat) {
+      return response.status(404).json({ error: 'Material not found' });
+    }
+
     await Steel.findByIdAndDelete(request.params.id);
-  } else {
-    response.status(404).json({ error: 'Material not found' });
+    return response.status(204).end();
+  } catch (error) {
+    console.error('Error:', error);
+    return response.status(500).json({ error: 'Internal server error' });
   }
-  response.status(204).end();
 });
 
 module.exports = steelRouter;

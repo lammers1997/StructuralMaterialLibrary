@@ -1,5 +1,7 @@
 const timberRouter = require('express').Router();
 const Timber = require('../models/timber');
+const User = require('../models/user');
+const { userExtractor } = require('../utils/middleware');
 
 // get all timbers
 timberRouter.get('/', async (request, response) => {
@@ -26,14 +28,31 @@ timberRouter.post('/', async (request, response) => {
   response.status(201).json(savedTimberMat);
 });
 
-timberRouter.delete('/:id', async (request, response) => {
-  const timberMat = await Timber.findById(request.params.id);
-  if (timberMat) {
+timberRouter.delete('/:id',userExtractor, async (request, response) => {
+  const userId = request.user._id;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return response.status(404).json({ error: 'User not found' });
+    }
+
+    if (user.role !== 'admin') {
+      return response.status(401).json({ error: 'Admin role is required' });
+    }
+
+    const timberMat = await Timber.findById(request.params.id);
+
+    if (!timberMat) {
+      return response.status(404).json({ error: 'Material not found' });
+    }
+
     await Timber.findByIdAndDelete(request.params.id);
-  } else {
-    response.status(404).json({ error: 'Material not found' });
+    return response.status(204).end();
+  } catch (error) {
+    console.error('Error:', error);
+    return response.status(500).json({ error: 'Internal server error' });
   }
-  response.status(204).end();
 });
 
 module.exports = timberRouter;
