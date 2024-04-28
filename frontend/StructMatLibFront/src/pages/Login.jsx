@@ -62,6 +62,9 @@ const Login = () => {
                     <p>
                         {user.name} logged in
                     </p>
+                    <p>
+                        role: {user.role}
+                    </p>
                     <button onClick={handleLogout}>logout</button>
                 </div>
             }

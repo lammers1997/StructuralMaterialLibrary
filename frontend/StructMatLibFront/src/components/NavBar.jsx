@@ -24,7 +24,7 @@ const NavBar = () => {
                 </Link>
                 <Link to='/login'>
                     <button className={currentPage === '/login' ? 'navbuttonactive' : 'navbutton'}>
-                        {loggedIn ? (`Logged in as ${user.name}` ) : ('Login')}
+                        {loggedIn ? (`${user.name}` ) : ('Login')}
                         </button>
                 </Link>
             </div>
