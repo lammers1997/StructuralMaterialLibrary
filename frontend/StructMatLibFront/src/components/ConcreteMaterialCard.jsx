@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 
 const ConcreteMaterialCard = ({
     name,
@@ -13,6 +14,9 @@ const ConcreteMaterialCard = ({
     deleteThis,
     id
 }) => {
+    const user = useSelector((state) => state.user.user);
+
+    const isAdmin = user && user.role === "admin";
 
     const cardStyle = {
         width: '250px',
@@ -46,9 +50,11 @@ const ConcreteMaterialCard = ({
                     <h2 style={{transform:'translateY(-70%)'}}>{name}</h2>
 
                 </div>
-                <div style={buttonStyle}>
-                    <button style={{transform:'translateY(20%)'}} onClick={() => deleteThis(id)}>Delete</button>
-                </div>
+                {isAdmin && (
+                    <div style={buttonStyle}>
+                        <button style={{transform:'translateY(20%)'}} onClick={() => deleteThis(id)}>Delete</button>
+                    </div>
+                )}
             </div>
             <div className='concreteContainer'>
                 <div className='dataset' style={textStyle}>

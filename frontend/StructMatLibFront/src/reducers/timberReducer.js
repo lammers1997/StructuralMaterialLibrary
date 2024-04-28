@@ -21,4 +21,4 @@ const timberSlice = createSlice({
 
 export const { setTimber, appendTimber, deleteTimber } = timberSlice.actions
 
-export default timberSlice.reducer
+export default timberSlice.reducer 

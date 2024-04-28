@@ -66,17 +66,17 @@ const AddSteelForm = () => {
                         type="number"
                         step='0.01'
                         value={newf_yk}
-                        onChange={event => setNewf_yk(event.target.value)} /></p>
+                        onChange={event => setNewf_yk(event.target.value)} />MPa</p>
                     <p>E<sub></sub>:<input
                         type="number"
                         step='0.01'
                         value={newE}
-                        onChange={event => setNewE(event.target.value)} /></p>
+                        onChange={event => setNewE(event.target.value)} />GPa</p>
                     <p>&#x3C1;<sub>k</sub>:<input
                         type="number"
                         step='0.01'
                         value={newdensity}
-                        onChange={event => setNewdensity(event.target.value)} /></p>
+                        onChange={event => setNewdensity(event.target.value)} />kg/m^3</p>
 
                 </div>
                 <div>

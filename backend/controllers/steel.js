@@ -4,8 +4,7 @@ const Steel = require('../models/steel');
 // get all steels
 steelRouter.get('/', async (request, response) => {
   console.log('Retrieving');
-  const steelData = await Steel
-    .find({});
+  const steelData = await Steel.find({});
   response.json(steelData);
 });
 

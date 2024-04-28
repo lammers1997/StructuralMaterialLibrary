@@ -16,6 +16,7 @@ import { deleteTimber } from '../reducers/timberReducer';
 
 const MaterialList = ({ displayMaterial }) => {
     const [notificationMessage, setNotificationMessage] = useState(null);
+    const [displayFilter, setDisplayFilter] = useState('')
     const dispatch = useDispatch();
 
     const materials = {
@@ -35,6 +36,11 @@ const MaterialList = ({ displayMaterial }) => {
             data: useSelector((state) => state.timber),
         },
     };
+
+    const handleFilterChange = (event) => {
+        const filterValue = event.target.value;
+        setDisplayFilter(filterValue)
+    }
 
     const handleDeleteMaterial = async (id, type) => {
         const material = materials[type].data.find((m) => m.id === id);
@@ -85,8 +91,9 @@ const MaterialList = ({ displayMaterial }) => {
     return (
         <div>
             <Notification message={notificationMessage} />
-            {/* ToDO: Filtering */}
-            <p>filter: <input></input></p>
+            <div>
+                filter: <input onChange={handleFilterChange} />
+            </div>
             <div
                 style={{
                     display: 'flex',
@@ -94,18 +101,18 @@ const MaterialList = ({ displayMaterial }) => {
                     gap: '20px',
                     paddingLeft: 20,
                     paddingTop: 20,
-                    width: 1000,
-                }}
-            >
+                }}>
                 {materials[displayMaterial].data.length === 0 ? (
                     <div>No {displayMaterial} materials yet added</div>
                 ) : (
                     materials[displayMaterial].data
-                    .slice()
-                    .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((material) => (
-                        <div key={material.id}>{renderMaterialCard(material)}</div>
-                    ))
+                        .slice()
+                        .filter(material =>
+                            material.name.toLowerCase().includes(displayFilter.toLowerCase()))
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .map((material) => (
+                            <div key={material.id}>{renderMaterialCard(material)}</div>
+                        ))
                 )}
             </div>
         </div>

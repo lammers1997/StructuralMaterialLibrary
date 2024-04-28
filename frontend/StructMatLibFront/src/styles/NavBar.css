@@ -18,8 +18,21 @@
 }
 
 .navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: lightgray;
     height: 50px;
     border-bottom-style: solid;
     border-bottom-width: thin;
+    width: auto;
+}
+.navbar-buttons {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.navbar-buttons > :last-child {
+    margin-left: auto;
 }

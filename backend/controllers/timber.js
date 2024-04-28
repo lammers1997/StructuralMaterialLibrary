@@ -4,8 +4,7 @@ const Timber = require('../models/timber');
 // get all timbers
 timberRouter.get('/', async (request, response) => {
   console.log('Retrieving');
-  const timberData = await Timber
-    .find({});
+  const timberData = await Timber.find({});
   response.json(timberData);
 });
 

@@ -107,50 +107,50 @@ const AddConcreteForm = () => {
                         type="number"
                         step='0.01'
                         value={newf_ck}
-                        onChange={event => setNewf_ck(event.target.value)} /></p>
+                        onChange={event => setNewf_ck(event.target.value)} />MPa</p>
 
                     <p>f<sub>ck,cube</sub>: <input
                         type="number"
                         step='0.01'
                         value={newf_ckcube}
-                        onChange={event => setNewf_ckcube(event.target.value)} /></p>
+                        onChange={event => setNewf_ckcube(event.target.value)} />MPa</p>
                     <p>f<sub>ctm</sub>:<input
                         type='number'
                         step='0.01'
                         value={newf_ctm}
-                        onChange={event => setNewf_ctm(event.target.value)} /></p>
+                        onChange={event => setNewf_ctm(event.target.value)} />MPa</p>
 
                     <p>f<sub>ctk,0,5</sub>:<input
                         type='number'
                         step='0.01'
                         value={newfctk05}
-                        onChange={event => setNewfctk05(event.target.value)} /></p>
+                        onChange={event => setNewfctk05(event.target.value)} />MPa</p>
 
                     <p>f<sub>ctk,0,95</sub>:<input
                         type='number'
                         step='0.01'
                         value={newfctk95}
-                        onChange={event => setNewfctk95(event.target.value)} /></p>
+                        onChange={event => setNewfctk95(event.target.value)} />MPa</p>
                     <p>E<sub>cm</sub>:<input
                         type='number'
                         step='0.01'
                         value={newEcm}
-                        onChange={event => setNewEcm(event.target.value)} /></p>
+                        onChange={event => setNewEcm(event.target.value)} />GPa</p>
                     <p>&#x3B5;<sub>c1</sub>:<input
                         type='number'
                         step='0.01'
                         value={newepsilon_c1}
-                        onChange={event => setNewepsilon_c1(event.target.value)} /></p>
+                        onChange={event => setNewepsilon_c1(event.target.value)} />&#8240;</p>
                     <p>&#x3C1;:<input
                         type='number'
                         step='0.01'
                         value={newdensity}
-                        onChange={event => setNewdensity(event.target.value)} /></p>
+                        onChange={event => setNewdensity(event.target.value)} />kg/m^3</p>
                     <p>&#x3BB;:<input
                         type='number'
                         step='0.01'
                         value={newthermal_conductivity}
-                        onChange={event => setNewthermal_conductivity(event.target.value)} /></p>
+                        onChange={event => setNewthermal_conductivity(event.target.value)} />W/(m*K)</p>
                 </div>
                 <div>
                     <button type="submit">add</button>
