@@ -35,4 +35,7 @@ app.use('/api/concrete', concreteRouter);
 app.use('/api/timber', timberRouter);
 app.use('/api/steel', steelRouter);
 
+app.use(middleware.unknownEndpoint);
+app.use(middleware.errorHandler);
+
 module.exports = app;

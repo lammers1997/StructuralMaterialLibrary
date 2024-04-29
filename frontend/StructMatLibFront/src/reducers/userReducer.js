@@ -22,6 +22,11 @@ const userSlice = createSlice({
             state.loggedIn = false;
             state.user = null;
             localStorage.removeItem('loggedAppUser');
+        },
+        isLoginExpired:(state,action) => {
+            if(!action.payload){
+                localStorage.removeItem('loggedAppUser')
+            }
         }
     }
 })
