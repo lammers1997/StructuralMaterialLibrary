@@ -59,20 +59,24 @@ const AddSteelForm = () => {
             <form onSubmit={handleSubmit}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <p>name: <input
+                    required
                         type="text"
                         value={newName}
                         onChange={event => setNewName(event.target.value)} /></p>
                     <p>f<sub>yk</sub>:<input
+                    required
                         type="number"
                         step='0.01'
                         value={newf_yk}
                         onChange={event => setNewf_yk(event.target.value)} />MPa</p>
                     <p>E<sub></sub>:<input
+                    required
                         type="number"
                         step='0.01'
                         value={newE}
                         onChange={event => setNewE(event.target.value)} />GPa</p>
                     <p>&#x3C1;<sub>k</sub>:<input
+                    required
                         type="number"
                         step='0.01'
                         value={newdensity}

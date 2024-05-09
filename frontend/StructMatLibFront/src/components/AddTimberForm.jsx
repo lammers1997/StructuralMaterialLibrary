@@ -130,70 +130,84 @@ const AddTimberForm = () => {
             <form onSubmit={handleSubmit}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <p>name: <input
+                        required
                         type="text"
                         value={newName}
                         onChange={event => setNewName(event.target.value)} /></p>
                     <p>f<sub>mk</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newf_mk}
                         onChange={event => setNewf_mk(event.target.value)} /> MPa</p>
                     <p>f<sub>t,0,k</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newf_t0k}
                         onChange={event => setNewf_t0k(event.target.value)} />MPa</p>
                     <p>f<sub>t,90,k</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newf_t90k}
                         onChange={event => setNewf_t90k(event.target.value)} />MPa</p>
                     <p>f<sub>c,0,k</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newf_c0k}
                         onChange={event => setNewf_c0k(event.target.value)} />MPa</p>
                     <p>f<sub>c,90,k</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newf_c90k}
                         onChange={event => setNewf_c90k(event.target.value)} />MPa</p>
                     <p>E<sub>0,mean</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newE_0mean}
                         onChange={event => setNewE_0mean(event.target.value)} />MPa</p>
                     <p>E<sub>0,05</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newE_005}
                         onChange={event => setNewE_005(event.target.value)} />MPa</p>
                     <p>E<sub>90,mean</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newE_90mean}
                         onChange={event => setNewE_90mean(event.target.value)} />GPa</p>
                     <p>G<sub>mean</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newG_mean}
                         onChange={event => setNewG_mean(event.target.value)} />GPa</p>
                     <p>G<sub>0,05</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newG_005}
                         onChange={event => setNewG_005(event.target.value)} />GPa</p>
                     <p>&#x3C1;<sub>k</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newdensity_k}
                         onChange={event => setNewdensity_k(event.target.value)} />kg/m^3</p>
                     <p>&#x3C1;<sub>mean</sub>:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newdensity_mean}
                         onChange={event => setNewdensity_mean(event.target.value)} />kg/m^3</p>
                     <p>&#x3BB;:<input
+                        required
                         type="number"
                         step='0.01'
                         value={newthermal_conductivity}

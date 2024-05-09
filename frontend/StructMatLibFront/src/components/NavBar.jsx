@@ -22,11 +22,20 @@ const NavBar = () => {
                 <Link to='/addnew'>
                     <button className={currentPage === '/addnew' ? 'navbuttonactive' : 'navbutton'}>Add new material</button>
                 </Link>
-                <Link to='/login'>
-                    <button className={currentPage === '/login' ? 'navbuttonactive' : 'navbutton'}>
-                        {loggedIn ? (`${user.name}` ) : ('Login')}
+                <div className='loginRegister-buttons'>
+                    {!loggedIn && (
+                        <Link to='/register'>
+                            <button className={currentPage === '/register' ? 'navbuttonactive' : 'navbutton'}>
+                                Register
+                            </button>
+                        </Link>
+                    )}
+                    <Link to='/login'>
+                        <button className={currentPage === '/login' ? 'navbuttonactive' : 'navbutton'}>
+                            {loggedIn ? (`${user.name}`) : ('Login')}
                         </button>
-                </Link>
+                    </Link>
+                </div>
             </div>
         </nav>
     )

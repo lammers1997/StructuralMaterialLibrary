@@ -8,6 +8,7 @@ import Materials from './pages/Materials'
 import Home from './pages/Home'
 import AddNew from './pages/AddNew'
 import Login from './pages/Login'
+import Register from './pages/Register'
 
 import NavBar from './components/NavBar'
 
@@ -51,6 +52,8 @@ const App = () => {
           <Route path="/materials" element={<Materials />} />
           <Route path="/addnew" element={<AddNew />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
         </Routes>
       </div>
     </Router>

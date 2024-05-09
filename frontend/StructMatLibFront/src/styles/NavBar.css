@@ -33,6 +33,6 @@
     width: 100%;
 }
 
-.navbar-buttons > :last-child {
+.loginRegister-buttons {
     margin-left: auto;
-}
+  }
