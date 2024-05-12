@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import '../styles/MatCard.css'
 
 const TimberMaterialCard = ({
     name,
@@ -21,46 +22,22 @@ const TimberMaterialCard = ({
     const user = useSelector((state) => state.user.user);
     
     const isAdmin = user && user.role === "admin";
-    const cardStyle = {
-        width: '250px',
-        padding: '5px',
-        borderRadius: '8px',
-        marginBottom: '20px',
-        backgroundColor: 'grey',
-        border: '1px solid #000000',
-
-    }
-    const textStyle = {
-        fontSize: '12px',
-        lineHeight: '1.5',
-        columnCount: 2,
-        columnGap: '10px',
-    }
-    const headerStyle = {
-        display: 'flex',
-        height:40,
-        borderBottom: '1px solid #000000'
-
-    }
-    const buttonStyle = {
-        marginLeft:120,
-    }
 
     return (
-        <div className='timberMatCard' style={cardStyle}>
-            <div style={headerStyle}>
-                <div>
-                    <h2 style={{transform:'translateY(-70%)'}}>{name}</h2>
+        <div className='MatCard'>
+            <div className='MatCard-header'>
+                <div className='MatCard-headerText'>
+                    <h2>{name}</h2>
 
                 </div>
                 {isAdmin && (
-                    <div style={buttonStyle}>
-                        <button style={{transform:'translateY(20%)'}} onClick={() => deleteThis(id)}>Delete</button>
+                    <div className='MatCard-delete'>
+                        <button onClick={() => deleteThis(id)}>Delete</button>
                     </div>
                 )}
             </div>
             <div className='timberContainer'>
-                <div className='dataset' style={textStyle}>
+                <div className='MatCard-text' >
                     <p>f<sub>mk</sub>: {f_mk.value} {f_mk.unit}</p>
                     <p>f<sub>t,0,k</sub>: {f_t0k.value} {f_t0k.unit}</p>
                     <p>f<sub>t,90,k</sub>: {f_t90k.value} {f_t90k.unit}</p>

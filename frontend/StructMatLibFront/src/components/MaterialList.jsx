@@ -14,6 +14,9 @@ import { deleteConcrete } from '../reducers/concreteReducer';
 import { deleteSteel } from '../reducers/steelReducer';
 import { deleteTimber } from '../reducers/timberReducer';
 
+import '../styles/MaterialList.css'
+
+
 const MaterialList = ({ displayMaterial }) => {
     const [notificationMessage, setNotificationMessage] = useState(null);
     const [displayFilter, setDisplayFilter] = useState('')
@@ -89,19 +92,12 @@ const MaterialList = ({ displayMaterial }) => {
     };
 
     return (
-        <div>
+        <div className='matlist-parent'>
             <Notification message={notificationMessage} />
             <div>
                 filter: <input onChange={handleFilterChange} />
             </div>
-            <div
-                style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '20px',
-                    paddingLeft: 20,
-                    paddingTop: 20,
-                }}>
+            <div className='matlist-view'>
                 {materials[displayMaterial].data.length === 0 ? (
                     <div>No {displayMaterial} materials yet added</div>
                 ) : (

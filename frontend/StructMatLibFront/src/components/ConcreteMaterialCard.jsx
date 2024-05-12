@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import '../styles/MatCard.css'
 
 const ConcreteMaterialCard = ({
     name,
@@ -18,46 +19,21 @@ const ConcreteMaterialCard = ({
 
     const isAdmin = user && user.role === "admin";
 
-    const cardStyle = {
-        width: '250px',
-        padding: '5px',
-        borderRadius: '8px',
-        marginBottom: '20px',
-        backgroundColor: 'grey',
-        border: '1px solid #000000',
-
-    }
-    const textStyle = {
-        fontSize: '12px',
-        lineHeight: '1.5',
-        columnCount: 2,
-        columnGap: '10px',
-    }
-    const headerStyle = {
-        display: 'flex',
-        height:40,
-        borderBottom: '1px solid #000000'
-
-    }
-    const buttonStyle = {
-        marginLeft:120,
-    }
-
     return (
-        <div className='concreteMatCard' style={cardStyle}>
-            <div style={headerStyle}>
+        <div className='MatCard'>
+            <div className='MatCard-header'>
                 <div>
-                    <h2 style={{transform:'translateY(-70%)'}}>{name}</h2>
+                    <h2 className='MatCard-headerText'>{name}</h2>
 
                 </div>
                 {isAdmin && (
-                    <div style={buttonStyle}>
-                        <button style={{transform:'translateY(20%)'}} onClick={() => deleteThis(id)}>Delete</button>
+                    <div className='MatCard-delete'>
+                        <button onClick={() => deleteThis(id)}>Delete</button>
                     </div>
                 )}
             </div>
             <div className='concreteContainer'>
-                <div className='dataset' style={textStyle}>
+                <div className='MatCard-text' >
                     <p>f<sub>ck</sub>: {f_ck.value} {f_ck.unit}</p>
                     <p>f<sub>ck,cube</sub>: {f_ckcube.value} {f_ckcube.unit}</p>
                     <p>f<sub>ctm</sub>: {f_ctm.value} {f_ctm.unit}</p>

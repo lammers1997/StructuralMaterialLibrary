@@ -18,8 +18,9 @@
 }
 .sideMenu {
     background-color: lightgray;
-    /* height: 100vh; */
-    height: auto;
+    height: 100vh;
+
+    /* height: auto; */
     width: 150px;
 
 }
