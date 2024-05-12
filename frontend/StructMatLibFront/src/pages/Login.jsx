@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-import {login, logout} from '../reducers/userReducer'
+import { login, logout } from '../reducers/userReducer'
 
 import loginService from '../services/login'
 
@@ -27,7 +27,7 @@ const Login = () => {
             setUsername('')
             setPassword('')
         } catch (error) {
-            console.log('Error username or password!')
+            console.log('Invalid username or password!')
         }
     }
 
@@ -61,8 +61,13 @@ const Login = () => {
             {!user && loginForm()}
             {user &&
                 <div>
+                    {console.log(user)}
+
                     <p>
                         {user.name} logged in
+                    </p>
+                    <p>
+                        Email: {user.email}
                     </p>
                     <p>
                         role: {user.role}

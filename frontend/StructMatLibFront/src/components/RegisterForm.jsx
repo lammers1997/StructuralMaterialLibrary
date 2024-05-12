@@ -4,16 +4,19 @@ const RegisterForm = ({
   username,
   password,
   name,
+  email,
   setName,
+  setEmail,
   setUsername,
   setPassword,
   handleRegister
 }) => {
   return (
     <form onSubmit={handleRegister}>
-        <div>
+      <div>
         Name
         <input
+          required
           id='name'
           type='text'
           value={name}
@@ -21,9 +24,19 @@ const RegisterForm = ({
           onChange={({ target }) => setName(target.value)}
         />
       </div>
+      Email
+      <input
+        required
+        id='email'
+        type='text'
+        value={email}
+        name='Email'
+        onChange={({ target }) => setEmail(target.value)}
+      />
       <div>
         username
         <input
+          required
           id='username'
           type='text'
           value={username}
@@ -31,10 +44,11 @@ const RegisterForm = ({
           onChange={({ target }) => setUsername(target.value)}
         />
       </div>
-      
+
       <div>
         password
         <input
+          required
           id='password'
           type='password'
           value={password}

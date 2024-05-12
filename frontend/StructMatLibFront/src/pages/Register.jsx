@@ -10,6 +10,8 @@ const Register = () => {
     const [username, setUsername] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
+
 
     const [notificationMessage, setNotificationMessage] = useState(null)
 
@@ -21,12 +23,14 @@ const Register = () => {
         event.preventDefault()
         try {
             const userCreds = await registerService.register({
-                username, password, name
+                username, password, email, name
             })
             setNotificationMessage(`registration for ${userCreds.name} succeed`)
             setName('')
             setUsername('')
             setPassword('')
+            setEmail('')
+
             setTimeout(() => {
                 setNotificationMessage(null)
             }, 6000)
@@ -45,7 +49,9 @@ const Register = () => {
                         username={username}
                         password={password}
                         name={name}
+                        email={email}
                         setName={setName}
+                        setEmail={setEmail}
                         setUsername={setUsername}
                         setPassword={setPassword}
                         handleRegister={handleRegister}

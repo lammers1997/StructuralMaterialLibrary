@@ -17,20 +17,20 @@ loginRouter.post('/', async (request, response) => {
       error: 'invalid username or password',
     });
   }
-  const userForToken = { 
+  const userForToken = {
     username: user.username,
     id: user._id,
   };
 
   // Token expires 20 mintues
   const token = jwt.sign(
-    userForToken, 
+    userForToken,
     process.env.SECRET,
-    { expiresIn: 60*20 }
+    { expiresIn: 60 * 20 }
   );
 
   response
     .status(200)
-    .send({ token, username: user.username, name: user.name, role: user.role });
+    .send({ token, username: user.username, name: user.name, role: user.role, email: user.email });
 });
 module.exports = loginRouter;
