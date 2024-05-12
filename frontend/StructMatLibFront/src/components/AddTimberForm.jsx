@@ -38,7 +38,7 @@ const AddTimberForm = () => {
     const dispatch = useDispatch()
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newTimberMaterial = {
             name: newName,
@@ -95,12 +95,19 @@ const AddTimberForm = () => {
                 unit: 'W/(m*K)',
             },
         }
-        //Dispatching not currently necessary, since data is constantly retrieved from server :/
-        // Might require some fix for this :P
-        // dispatch(appendMaterial(newTimberMaterial))
 
-        timberService.addNewMaterial(newTimberMaterial)
-        setNotificationMessage(`Material ${newName}, successfully added`)
+        try {
+            //Dispatching not currently necessary, since data is constantly retrieved from server :/
+            // Might require some fix for this :P
+            dispatch(appendTimber(newTimberMaterial))
+
+            await timberService.addNewMaterial(newTimberMaterial)
+            setNotificationMessage(`Material ${newName}, successfully added`)
+
+        } catch (error) {
+            window.alert(error.response.data.error);
+        }
+
 
         setNewName('')
         setNewf_mk('')

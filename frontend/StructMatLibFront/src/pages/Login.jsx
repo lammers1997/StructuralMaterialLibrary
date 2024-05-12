@@ -33,6 +33,8 @@ const Login = () => {
 
     const handleLogout = async () => {
         dispatch(logout())
+        loginService.setToken(null)
+
     }
 
     const loginForm = () => {

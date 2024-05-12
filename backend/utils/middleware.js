@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const logger = require('./logger');
 
-
 const requestLogger = (request, response, next) => {
   logger.info('Method:', request.method);
   logger.info('Path:  ', request.path);
@@ -33,17 +32,6 @@ const errorHandler = (error, request, response, next) => {
   next(error);
 };
 
-/**
- * Validate input data to have title and url
- * Not currently in use, because makes tests run slower
-*/
-const validateInput = (request, response) => {
-  const blogData = request.body;
-  if (!blogData.title || !blogData.url) {
-    return response.status(400).json({ error: 'title and url required' });
-  }
-};
-
 // Token extraction from authorization request header
 const tokenExtractor = (request, response, next) => {
   const authorization = request.get('authorization');
@@ -56,15 +44,19 @@ const tokenExtractor = (request, response, next) => {
 
 // User extraction from token
 const userExtractor = async (request, response, next) => {
-  const decodedToken = jwt.verify(request.token, process.env.SECRET);
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'invalid token' });
+  try {
+    const decodedToken = jwt.verify(request.token, process.env.SECRET);
+    if (!decodedToken.id) {
+      return response.status(401).json({ error: 'invalid token' });
+    }
+    const user = await User.findById(decodedToken.id);
+    if (!user) {
+      return response.status(401).json({ error: 'user not found' });
+    }
+    request.user = user;
+  } catch (error) {
+    return response.status(401).json({ error: 'invalid or missing token' });
   }
-  const user = await User.findById(decodedToken.id);
-  if (!user) {
-    return response.status(401).json({ error: 'user not found' });
-  }
-  request.user = user;
   next();
 };
 
@@ -72,7 +64,6 @@ module.exports = {
   requestLogger,
   unknownEndpoint,
   errorHandler,
-  validateInput,
   tokenExtractor,
   userExtractor,
 }

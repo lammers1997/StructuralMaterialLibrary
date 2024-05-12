@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
-import { appendSteel  } from "../reducers/steelReducer"
+import { appendSteel } from "../reducers/steelReducer"
 import steelService from '../services/steels'
 import Notification from "./Notification"
 
@@ -16,7 +16,7 @@ const AddSteelForm = () => {
 
     const dispatch = useDispatch()
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newSteelMaterial = {
             name: newName,
@@ -34,12 +34,19 @@ const AddSteelForm = () => {
             },
         }
 
-        //Dispatching not currently necessary, since data is constantly retrieved from server :/
-        // Might require some fix for this :P
-        // dispatch(appendMaterial(newSteelMaterial))
+        try {
+            //Dispatching not currently necessary, since data is constantly retrieved from server :/
+            // Might require some fix for this :P
+            dispatch(appendSteel(newSteelMaterial))
 
-        steelService.addNewMaterial(newSteelMaterial)
-        setNotificationMessage(`Material ${newName}, successfully added`)
+            await steelService.addNewMaterial(newSteelMaterial)
+            setNotificationMessage(`Material ${newName}, successfully added`)
+
+        } catch (error) {
+            window.alert(error.response.data.error);
+        }
+
+
 
         setNewName('')
         setNewf_yk('')
@@ -59,24 +66,24 @@ const AddSteelForm = () => {
             <form onSubmit={handleSubmit}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <p>name: <input
-                    required
+                        required
                         type="text"
                         value={newName}
                         onChange={event => setNewName(event.target.value)} /></p>
                     <p>f<sub>yk</sub>:<input
-                    required
+                        required
                         type="number"
                         step='0.01'
                         value={newf_yk}
                         onChange={event => setNewf_yk(event.target.value)} />MPa</p>
                     <p>E<sub></sub>:<input
-                    required
+                        required
                         type="number"
                         step='0.01'
                         value={newE}
                         onChange={event => setNewE(event.target.value)} />GPa</p>
                     <p>&#x3C1;<sub>k</sub>:<input
-                    required
+                        required
                         type="number"
                         step='0.01'
                         value={newdensity}

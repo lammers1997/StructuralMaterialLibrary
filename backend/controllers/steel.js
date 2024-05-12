@@ -11,7 +11,7 @@ steelRouter.get('/', async (request, response) => {
 });
 
 // Add new steel material
-steelRouter.post('/', async (request, response) => {
+steelRouter.post('/', userExtractor, async (request, response) => {
   console.log('Adding');
   const { body } = request;
 
@@ -19,8 +19,16 @@ steelRouter.post('/', async (request, response) => {
   if (!body.name) {
     return response.status(400).json({ error: 'Both, title and url are required' })
   }
-  console.log(body);
-  // Create new blog
+  if (request.user.role !== 'admin') {
+    return response.status(401).json({ error: 'Admin role is required' });
+  }
+  // Check if a material with the same name already exists
+  const existingMaterial = await Steel.findOne({ name: body.name });
+
+  if (existingMaterial) {
+    return response.status(400).json({ error: 'Material with the same name already exists' });
+  }
+  // Create new steel material
   const steelMaterial = new Steel(body);
   const savedSteelMat = await steelMaterial.save();
   // add new material to database

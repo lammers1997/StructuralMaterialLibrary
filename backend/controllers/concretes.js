@@ -11,22 +11,30 @@ concretesRouter.get('/', async (request, response) => {
 });
 
 // Add new concrete material
-concretesRouter.post('/', async (request, response) => {
-  console.log('Adding');
+concretesRouter.post('/', userExtractor, async (request, response) => {
   const { body } = request;
 
   // Make sure atleast NAME exists
   if (!body.name) {
     return response.status(400).json({ error: 'Both, title and url are required' })
   }
-  console.log(body);
-  // Create new blog
+  if (request.user.role !== 'admin') {
+    return response.status(401).json({ error: 'Admin role is required' });
+  }
+  // Check if a material with the same name already exists
+  const existingMaterial = await Concrete.findOne({ name: body.name });
+
+  if (existingMaterial) {
+    return response.status(400).json({ error: 'Material with the same name already exists' });
+  }
+  // Create new concrete material
   const concreteMaterial = new Concrete(body);
   const savedConcreteMat = await concreteMaterial.save();
   // add new material to database
 
   response.status(201).json(savedConcreteMat);
 });
+
 concretesRouter.delete('/:id', userExtractor, async (request, response) => {
   const userId = request.user._id;
 
