@@ -14,6 +14,8 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setTimber } from '../reducers/timberReducer'
 
+import '../styles/MaterialList.css'
+
 
 const Materials = () => {
 
@@ -38,7 +40,7 @@ const Materials = () => {
 
   return (
     <div>
-      <div style={{ display: 'flex', }}>
+      <div className='material-content'>
 
         {/* SideMenu manages what is wanted to display */}
         <SideMenu onMaterialChange={handleMaterialChange}

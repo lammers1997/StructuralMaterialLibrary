@@ -29,7 +29,7 @@ loginRouter.post('/', async (request, response) => {
     { expiresIn: 60 * 20 }
   );
 
-  response
+  return response
     .status(200)
     .send({ token, username: user.username, name: user.name, role: user.role, email: user.email });
 });

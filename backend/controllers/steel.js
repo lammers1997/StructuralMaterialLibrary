@@ -33,7 +33,7 @@ steelRouter.post('/', userExtractor, async (request, response) => {
   const savedSteelMat = await steelMaterial.save();
   // add new material to database
 
-  response.status(201).json(savedSteelMat);
+  return response.status(201).json(savedSteelMat);
 });
 
 steelRouter.delete('/:id', userExtractor, async (request, response) => {

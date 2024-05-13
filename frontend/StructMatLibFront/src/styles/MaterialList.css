@@ -5,6 +5,11 @@
     padding-left: 20px;
     padding-top: 20px;
 }
-.matlist-parent{
-    height: 1000px;
+
+.matlist-parent {
+    height: auto;
+}
+
+.material-content {
+    display: flex;
 }

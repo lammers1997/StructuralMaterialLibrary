@@ -32,7 +32,7 @@ concretesRouter.post('/', userExtractor, async (request, response) => {
   const savedConcreteMat = await concreteMaterial.save();
   // add new material to database
 
-  response.status(201).json(savedConcreteMat);
+  return response.status(201).json(savedConcreteMat);
 });
 
 concretesRouter.delete('/:id', userExtractor, async (request, response) => {
