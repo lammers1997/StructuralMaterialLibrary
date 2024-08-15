@@ -1,37 +1,31 @@
-import MaterialList from '../components/MaterialList'
-import SideMenu from '../components/SideMenu'
-import Notification from '../components/Notification'
+import MaterialList from "../components/MaterialList";
+import SideMenu from "../components/SideMenu";
 
-import { setConcretes } from '../reducers/concreteReducer'
-import { setSteel } from '../reducers/steelReducer'
+import { setConcretes } from "../reducers/concreteReducer";
+import { setSteel } from "../reducers/steelReducer";
 
-import concreteService from '../services/concretes'
-import steelService from '../services/steels'
-import timberService from '../services/timbers'
+import concreteService from "../services/concretes";
+import steelService from "../services/steels";
+import timberService from "../services/timbers";
 
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setTimber } from "../reducers/timberReducer";
 
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setTimber } from '../reducers/timberReducer'
-
-import '../styles/MaterialList.css'
-
+import "../styles/MaterialList.css";
 
 const Materials = () => {
+  const [displayMaterial, setDisplayMaterial] = useState("concrete");
 
-  const [displayMaterial, setDisplayMaterial] = useState('concrete')
-
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   concreteService
-    .getAll().then(concretes => dispatch(setConcretes(concretes)))
+    .getAll()
+    .then((concretes) => dispatch(setConcretes(concretes)));
 
-  steelService
-    .getAll().then(steels => dispatch(setSteel(steels)))
+  steelService.getAll().then((steels) => dispatch(setSteel(steels)));
 
-  timberService
-    .getAll().then(timbers => dispatch(setTimber(timbers)))
+  timberService.getAll().then((timbers) => dispatch(setTimber(timbers)));
 
   //Handle different materialbutton click on sidemenu, to pass info forward
   const handleMaterialChange = (material) => {
@@ -41,18 +35,17 @@ const Materials = () => {
   return (
     <div>
       <div className='material-content'>
-
         {/* SideMenu manages what is wanted to display */}
-        <SideMenu onMaterialChange={handleMaterialChange}
-          displayMaterial={displayMaterial} />
+        <SideMenu
+          onMaterialChange={handleMaterialChange}
+          displayMaterial={displayMaterial}
+        />
 
         {/* Show wanted material */}
         <MaterialList displayMaterial={displayMaterial} />
-
       </div>
     </div>
+  );
+};
 
-  )
-}
-
-export default Materials
+export default Materials;
