@@ -2,7 +2,7 @@
 
 Material library for structural engineers. Browse material properties in three categories: Concrete/Steel/Timber.
 
-##Current features:
+## Current features:
 
 - Browse material properties in each category: Concrete/Steel/Timber
 - Filter shown properties
@@ -14,7 +14,7 @@ Not currently published on the web
 
 Created with React using React-Bootstrap framework in the frontend, Node.js with REST at backend and MongoDB as database.
 
-##Technologies:
+## Technologies:
 
 Front-end:
 -React with React Bootstrap UI framework
