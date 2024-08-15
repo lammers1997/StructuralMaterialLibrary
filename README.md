@@ -12,13 +12,13 @@ Material library for structural engineers. Browse material properties in three c
 
 Not currently published on the web
 
-Created with React using React-Bootstrap framework in the frontend, Node.js with REST at backend and MongoDB as database.
-
 ## Technologies:
 
 Front-end:
--React with React Bootstrap UI framework
+
+- React and React Bootstrap
 
 Back-end:
--REST API with Node.js
--MongoDB as database
+
+- REST API with Node.js
+- MongoDB as database
