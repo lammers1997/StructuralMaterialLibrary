@@ -1,24 +1,24 @@
 .menuButton {
-    font-size: 24px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    margin-top: 15px;
+  font-size: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-top: 15px;
+  color: black;
 }
 .menuButton:hover {
-    background-color: #a0a0a0;
-    color: black;
-    cursor: pointer;
+  background-color: #a0a0a0;
+  color: black;
+  cursor: pointer;
 }
 .menuButtonActive {
-    font-size: 24px;
-    border: #f0f0f0;
-    background: #a0a0a0;
-    margin-top: 15px;
+  font-size: 24px;
+  border: #f0f0f0;
+  background: #a0a0a0;
+  margin-top: 15px;
 }
 .sideMenu {
-    background-color: lightgray;
-    height: auto;
-    width: 150px;
-
+  background-color: lightgray;
+  height: auto;
+  width: 150px;
 }

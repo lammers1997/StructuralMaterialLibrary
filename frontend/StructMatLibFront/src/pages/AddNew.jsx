@@ -4,6 +4,7 @@ import AddTimberForm from "../components/AddTimberForm";
 import AddSteelForm from "../components/AddSteelForm";
 
 import "../styles/AddNew.css";
+import { Container, Button } from "react-bootstrap";
 
 const AddNew = () => {
   const [concFormVisibility, setConcFormVisiblity] = useState(false);
@@ -32,30 +33,30 @@ const AddNew = () => {
   };
 
   return (
-    <div>
+    <Container style={{ marginLeft: "0px" }}>
       <p>Select what material you would like to add</p>
-      <button
+      <Button
         className={addMaterial === "concrete" ? "addButtonActive" : "addButton"}
         onClick={handleConcreteClick}
       >
         Concrete
-      </button>
-      <button
+      </Button>
+      <Button
         className={addMaterial === "steel" ? "addButtonActive" : "addButton"}
         onClick={handleSteelClick}
       >
         Steel
-      </button>
-      <button
+      </Button>
+      <Button
         className={addMaterial === "timber" ? "addButtonActive" : "addButton"}
         onClick={handleTimberClick}
       >
         Timber
-      </button>
+      </Button>
       {concFormVisibility && <AddConcreteForm />}
       {steelFormVisibility && <AddSteelForm />}
       {timberFormVisibility && <AddTimberForm />}
-    </div>
+    </Container>
   );
 };
 

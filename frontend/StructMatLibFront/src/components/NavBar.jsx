@@ -1,43 +1,63 @@
+import { useSelector } from "react-redux";
 
-import { useSelector } from 'react-redux';
-import '../styles/NavBar.css'
-
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 const NavBar = () => {
-    const currentPage = useLocation().pathname;
-    const { loggedIn, user } = useSelector((state) => state.user)
+  const currentPage = useLocation().pathname;
+  const { loggedIn, user } = useSelector((state) => state.user);
 
+  return (
+    <Navbar bg='light' data-bs-theme='dark'>
+      <Container style={{ marginLeft: "0px" }}>
+        <Navbar.Brand href='/'>Structural material library</Navbar.Brand>
 
+        <Nav variant='pills' bg='light' defaultActiveKey={currentPage}>
+          <Nav.Item>
+            <Nav.Link eventKey='/' href='/'>
+              Home
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey='/materials' href='/materials'>
+              Materials
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey='/addnew' href='/addnew'>
+              Add new material
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
 
-    return (
-        <nav className='navbar'>
-            <div className='navbar-buttons'>
-                <Link to="/">
-                    <button className={currentPage === '/' ? 'navbuttonactive' : 'navbutton'}>Home</button>
-                </Link>
-                <Link to='/materials'>
-                    <button className={currentPage === '/materials' ? 'navbuttonactive' : 'navbutton'}>Materials</button>
-                </Link>
-                <Link to='/addnew'>
-                    <button className={currentPage === '/addnew' ? 'navbuttonactive' : 'navbutton'}>Add new material</button>
-                </Link>
-                <div className='loginRegister-buttons'>
-                    {!loggedIn && (
-                        <Link to='/register'>
-                            <button className={currentPage === '/register' ? 'navbuttonactive' : 'navbutton'}>
-                                Register
-                            </button>
-                        </Link>
-                    )}
-                    <Link to='/login'>
-                        <button className={currentPage === '/login' ? 'navbuttonactive' : 'navbutton'}>
-                            {loggedIn ? (`${user.name}`) : ('Login')}
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        </nav>
-    )
-}
+        <Nav
+          className='justify-content-end'
+          variant='pills'
+          bg='dark'
+          defaultActiveKey={currentPage}
+        >
+          <Nav.Item>
+            {!loggedIn && <Nav.Link href='/register'>Register</Nav.Link>}
+          </Nav.Item>
+          <Nav.Item className='justify-content-end'>
+            <Nav.Link href='/login'>
+              {loggedIn ? `${user.name}` : "Login"}
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+
+        {/* <Navbar.Toggle/>
+        <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+                Signed in as: <a href='/login'></a>
+            </Navbar.Text>
+        </Navbar.Collapse> */}
+        {/* <Nav className='justify-content-end'>
+        {!loggedIn && <Nav.Link href='/register'>Register</Nav.Link>}
+        <Nav.Link href='/login'>{loggedIn ? `${user.name}` : "Login"}</Nav.Link>
+      </Nav> */}
+      </Container>
+    </Navbar>
+  );
+};
 export default NavBar;

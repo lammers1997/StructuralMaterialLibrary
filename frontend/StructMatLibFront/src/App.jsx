@@ -31,7 +31,6 @@ const App = () => {
 
     const tokenExpireTime = decodedToken.exp * 1000;
     const currentTime = Date.now();
-    console.log(tokenExpireTime - currentTime);
 
     setTimeout(() => {
       window.alert("Session has ended!");

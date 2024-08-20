@@ -1,26 +1,37 @@
-import '../styles/SideMenu.css'
-
+import { Nav, Button } from "react-bootstrap";
+import "../styles/SideMenu.css";
 
 const SideMenu = ({ onMaterialChange, displayMaterial }) => {
+  return (
+    <Nav className='flex-column'>
+      {/* Option to display different materials */}
 
-
-    return (
-        <div className='sideMenu'>
-
-            {/* Option to display different materials */}
-
-            <button className={displayMaterial === 'concrete' ? 'menuButtonActive' : 'menuButton'} onClick={() => onMaterialChange('concrete')}>
-                Concrete
-            </button>
-            <button className={displayMaterial === 'steel' ? 'menuButtonActive' : 'menuButton'} onClick={() => onMaterialChange('steel')}>
-                Steel
-            </button>
-            <button className={displayMaterial === 'timber' ? 'menuButtonActive' : 'menuButton'} onClick={() => onMaterialChange('timber')}>
-                Timber
-            </button>
-
-        </div>
-    );
+      <Button
+        className={
+          displayMaterial === "concrete" ? "menuButtonActive" : "menuButton"
+        }
+        onClick={() => onMaterialChange("concrete")}
+      >
+        Concrete
+      </Button>
+      <Button
+        className={
+          displayMaterial === "steel" ? "menuButtonActive" : "menuButton"
+        }
+        onClick={() => onMaterialChange("steel")}
+      >
+        Steel
+      </Button>
+      <Button
+        className={
+          displayMaterial === "timber" ? "menuButtonActive" : "menuButton"
+        }
+        onClick={() => onMaterialChange("timber")}
+      >
+        Timber
+      </Button>
+    </Nav>
+  );
 };
 
 export default SideMenu;

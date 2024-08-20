@@ -1,18 +1,13 @@
 .addButton:hover {
-    background-color: #a0a0a0;
-    color: black;
-    cursor: pointer;
+  background-color: #a0a0a0;
+  color: black;
+  cursor: pointer;
 }
 .addButtonActive {
-    font-size: 18px;
-    border: 1px solid black;
-    background: #a0a0a0;
-    margin-top: 15px;
+  border: 0px solid;
 }
 
 .addButton {
-    font-size: 18px;
-    border: 1px solid black;
-    background: transparent;
-    margin-top: 15px;
+  background: transparent;
+  color: black;
 }
