@@ -8,8 +8,14 @@ const NavBar = () => {
   const { loggedIn, user } = useSelector((state) => state.user);
 
   return (
-    <Navbar bg='light' data-bs-theme='dark'>
-      <Container style={{ marginLeft: "0px" }}>
+    <Navbar
+      sticky='top'
+      bg='light'
+      data-bs-theme='dark'
+      expand='lg'
+      style={{ borderBottom: "1px solid #adb5bd" }}
+    >
+      <Container>
         <Navbar.Brand href='/'>
           <img src='src\img\Structural.png' />
           {/* Structural material library */}
@@ -34,7 +40,7 @@ const NavBar = () => {
         </Nav>
 
         <Nav
-          className='justify-content-end'
+          className='ml-auto'
           variant='pills'
           bg='dark'
           defaultActiveKey={currentPage}
