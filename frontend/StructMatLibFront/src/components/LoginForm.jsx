@@ -10,9 +10,10 @@ const LoginForm = ({
 }) => {
   return (
     <Form onSubmit={handleLogin}>
-      <Form.Group>
+      <Form.Group className='mb-3'>
         <Form.Label>username</Form.Label>
         <Form.Control
+          placeholder='Enter username'
           id='username'
           type='text'
           value={username}
@@ -23,6 +24,7 @@ const LoginForm = ({
       <Form.Group>
         <Form.Label>password</Form.Label>
         <Form.Control
+          placeholder='Enter password'
           id='password'
           type='password'
           value={password}
@@ -30,7 +32,7 @@ const LoginForm = ({
           onChange={({ target }) => setPassword(target.value)}
         />
       </Form.Group>
-      <Button variant='primary' id='login-button' type='submit'>
+      <Button variant='success' id='login-button' type='submit'>
         login
       </Button>
     </Form>

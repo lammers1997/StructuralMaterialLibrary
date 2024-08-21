@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { appendConcretes } from "../reducers/concreteReducer";
 import concreteService from "../services/concretes";
-// import Notification from "./Notification"
-import { Form, Button, Alert, Row, Col } from "react-bootstrap";
+import Notification from "./Notification";
+import { Form, Button } from "react-bootstrap";
 
 const AddConcreteForm = () => {
   const [newName, setNewName] = useState("");
@@ -95,9 +95,8 @@ const AddConcreteForm = () => {
 
   return (
     <div>
-      {notificationMessage && (
-        <Alert variant='success'>{notificationMessage}</Alert>
-      )}
+      <Notification message={notificationMessage} />
+
       <Form onSubmit={handleSubmit} style={{ width: "24rem" }}>
         <Form.Group>
           <Form.Label>Name:</Form.Label>

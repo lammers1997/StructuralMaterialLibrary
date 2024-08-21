@@ -10,7 +10,10 @@ const NavBar = () => {
   return (
     <Navbar bg='light' data-bs-theme='dark'>
       <Container style={{ marginLeft: "0px" }}>
-        <Navbar.Brand href='/'>Structural material library</Navbar.Brand>
+        <Navbar.Brand href='/'>
+          <img src='src\img\Structural.png' />
+          {/* Structural material library */}
+        </Navbar.Brand>
 
         <Nav variant='pills' bg='light' defaultActiveKey={currentPage}>
           <Nav.Item>

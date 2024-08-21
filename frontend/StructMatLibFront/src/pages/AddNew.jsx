@@ -33,7 +33,7 @@ const AddNew = () => {
   };
 
   return (
-    <Container style={{ marginLeft: "0px" }}>
+    <Container className='justify-content-center' style={{ width: "24rem" }}>
       <p>Select what material you would like to add</p>
       <Button
         className={addMaterial === "concrete" ? "addButtonActive" : "addButton"}

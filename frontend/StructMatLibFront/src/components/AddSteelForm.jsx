@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { appendSteel } from "../reducers/steelReducer";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
+import Notification from "./Notification";
 
 import steelService from "../services/steels";
 
@@ -56,9 +57,7 @@ const AddSteelForm = () => {
 
   return (
     <div>
-      {notificationMessage && (
-        <Alert variant='success'>{notificationMessage}</Alert>
-      )}
+      <Notification message={notificationMessage} />
 
       <Form onSubmit={handleSubmit}>
         <Form.Group>
@@ -109,54 +108,6 @@ const AddSteelForm = () => {
         <Button variant='primary' type='submit'>
           add
         </Button>
-
-        {/* <div style={{ display: "flex", flexDirection: "column" }}>
-          <p>
-            name:{" "}
-            <input
-              required
-              type='text'
-              value={newName}
-              onChange={(event) => setNewName(event.target.value)}
-            />
-          </p>
-          <p>
-            f<sub>yk</sub>:
-            <input
-              required
-              type='number'
-              step='0.01'
-              value={newf_yk}
-              onChange={(event) => setNewf_yk(event.target.value)}
-            />
-            MPa
-          </p>
-          <p>
-            E<sub></sub>:
-            <input
-              required
-              type='number'
-              step='0.01'
-              value={newE}
-              onChange={(event) => setNewE(event.target.value)}
-            />
-            GPa
-          </p>
-          <p>
-            &#x3C1;<sub>k</sub>:
-            <input
-              required
-              type='number'
-              step='0.01'
-              value={newdensity}
-              onChange={(event) => setNewdensity(event.target.value)}
-            />
-            kg/m^3
-          </p>
-        </div>
-        <div>
-          <button type='submit'>add</button>
-        </div> */}
       </Form>
     </div>
   );

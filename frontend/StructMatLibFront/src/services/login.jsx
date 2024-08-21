@@ -1,20 +1,22 @@
-import axios from 'axios'
+import axios from "axios";
 
-//ToDo: when creating frontend to BUILD: baseUrl = /api/concrete
+const baseUrl = "http://localhost:3003/api/login";
 
-const baseUrl = 'http://localhost:3003/api/login'
-
-let token = null
+let token = null;
 const setToken = (newToken) => {
-    token = `Bearer ${newToken}`
-}
+  token = `Bearer ${newToken}`;
+  sessionStorage.setItem("token", token);
+};
 
-const getToken =  () => {
-    return token;
-}
+const getToken = () => {
+  if (!token) {
+    token = sessionStorage.getItem("token");
+  }
+  return token;
+};
 
 const login = async (credentials) => {
-  const response = await axios.post(baseUrl, credentials)
-  return response.data
-}
-export default { login, setToken, getToken }
+  const response = await axios.post(baseUrl, credentials);
+  return response.data;
+};
+export default { login, setToken, getToken };

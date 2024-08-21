@@ -1,32 +1,36 @@
-const timberRouter = require('express').Router();
-const Timber = require('../models/timber');
-const User = require('../models/user');
-const { userExtractor } = require('../utils/middleware');
+const timberRouter = require("express").Router();
+const Timber = require("../models/timber");
+const User = require("../models/user");
+const { userExtractor } = require("../utils/middleware");
 
 // get all timbers
-timberRouter.get('/', async (request, response) => {
-  console.log('Retrieving');
+timberRouter.get("/", async (request, response) => {
+  console.log("Retrieving");
   const timberData = await Timber.find({});
   response.json(timberData);
 });
 
 // Add new timber material
-timberRouter.post('/', userExtractor, async (request, response) => {
-  console.log('Adding');
+timberRouter.post("/", userExtractor, async (request, response) => {
+  console.log("Adding");
   const { body } = request;
 
   // Make sure atleast NAME exists
   if (!body.name) {
-    return response.status(400).json({ error: 'Both, title and url are required' })
+    return response
+      .status(400)
+      .json({ error: "Both, title and url are required" });
   }
-  if (request.user.role !== 'admin') {
-    return response.status(401).json({ error: 'Admin role is required' });
+  if (request.user.role !== "admin") {
+    return response.status(401).json({ error: "Admin role is required" });
   }
   // Check if a material with the same name already exists
   const existingMaterial = await Timber.findOne({ name: body.name });
 
   if (existingMaterial) {
-    return response.status(400).json({ error: 'Material with the same name already exists' });
+    return response
+      .status(400)
+      .json({ error: "Material with the same name already exists" });
   }
   // Create new timber material
   const timberMaterial = new Timber(body);
@@ -36,30 +40,30 @@ timberRouter.post('/', userExtractor, async (request, response) => {
   response.status(201).json(savedTimberMat);
 });
 
-timberRouter.delete('/:id', userExtractor, async (request, response) => {
+timberRouter.delete("/:id", userExtractor, async (request, response) => {
   const userId = request.user._id;
 
   try {
     const user = await User.findById(userId);
     if (!user) {
-      return response.status(404).json({ error: 'User not found' });
+      return response.status(404).json({ error: "User not found" });
     }
 
-    if (user.role !== 'admin') {
-      return response.status(401).json({ error: 'Admin role is required' });
+    if (user.role !== "admin") {
+      return response.status(401).json({ error: "Admin role is required" });
     }
 
     const timberMat = await Timber.findById(request.params.id);
 
     if (!timberMat) {
-      return response.status(404).json({ error: 'Material not found' });
+      return response.status(404).json({ error: "Material not found" });
     }
 
     await Timber.findByIdAndDelete(request.params.id);
     return response.status(204).end();
   } catch (error) {
-    console.error('Error:', error);
-    return response.status(500).json({ error: 'Internal server error' });
+    console.error("Error:", error);
+    return response.status(500).json({ error: "Internal server error" });
   }
 });
 

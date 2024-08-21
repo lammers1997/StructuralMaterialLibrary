@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { appendTimber } from "../reducers/timberReducer";
 import timberService from "../services/timbers";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
+import Notification from "./Notification";
 
 const AddTimberForm = () => {
   const [newName, setNewName] = useState("");
@@ -122,9 +123,7 @@ const AddTimberForm = () => {
 
   return (
     <div>
-      {notificationMessage && (
-        <Alert variant='success'>{notificationMessage}</Alert>
-      )}
+      <Notification message={notificationMessage} />
 
       <Form onSubmit={handleSubmit}>
         <Form.Group>
