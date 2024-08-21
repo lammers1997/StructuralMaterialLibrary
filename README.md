@@ -22,3 +22,4 @@ Back-end:
 
 - REST API with Node.js
 - MongoDB as database
+![image](https://github.com/user-attachments/assets/f4072fbd-b0ae-429f-a362-02bfde120c55)
