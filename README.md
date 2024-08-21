@@ -26,6 +26,6 @@ Back-end:
 
 ## Some images from the page:
 
-![image](https://github.com/user-attachments/assets/f4072fbd-b0ae-429f-a362-02bfde120c55)
-![image](https://github.com/user-attachments/assets/91f60fda-f937-4410-ad09-7bfaf785968c)
-![image](https://github.com/user-attachments/assets/d33b7fb3-1e93-4735-ae50-bfd730c78170)
+![image](https://github.com/user-attachments/assets/06411951-6996-4c41-92d1-961ea905b328)
+![image](https://github.com/user-attachments/assets/d195482f-f217-4a20-9b6e-2632fb164ba9)
+![image](https://github.com/user-attachments/assets/8f252f1b-956b-44f1-b074-18f22990d859)
