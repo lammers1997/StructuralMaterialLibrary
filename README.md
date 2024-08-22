@@ -20,7 +20,7 @@ Front-end:
 
 Back-end:
 
-- REST API with Node.js
+- REST API with Node and Express
 - MongoDB as database
 
 
