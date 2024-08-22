@@ -18,7 +18,6 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand href='/'>
           <img src='src\img\Structural.png' />
-          {/* Structural material library */}
         </Navbar.Brand>
 
         <Nav variant='pills' bg='light' defaultActiveKey={currentPage}>
@@ -54,17 +53,6 @@ const NavBar = () => {
             </Nav.Link>
           </Nav.Item>
         </Nav>
-
-        {/* <Navbar.Toggle/>
-        <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-                Signed in as: <a href='/login'></a>
-            </Navbar.Text>
-        </Navbar.Collapse> */}
-        {/* <Nav className='justify-content-end'>
-        {!loggedIn && <Nav.Link href='/register'>Register</Nav.Link>}
-        <Nav.Link href='/login'>{loggedIn ? `${user.name}` : "Login"}</Nav.Link>
-      </Nav> */}
       </Container>
     </Navbar>
   );
