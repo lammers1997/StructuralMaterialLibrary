@@ -27,5 +27,3 @@ Back-end:
 ## Some images from the page:
 
 ![image](https://github.com/user-attachments/assets/06411951-6996-4c41-92d1-961ea905b328)
-![image](https://github.com/user-attachments/assets/d195482f-f217-4a20-9b6e-2632fb164ba9)
-![image](https://github.com/user-attachments/assets/8f252f1b-956b-44f1-b074-18f22990d859)
